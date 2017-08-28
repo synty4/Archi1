@@ -54,10 +54,9 @@ public class Cache_Set {
             return my_recent_block;
         }
        
-    public Cache_Block ref() {
-	 //Cache_Block [] ref_block =  new Cache_Block [set_associativity]; 
+    public Cache_Block ref() { 
+    	
 	 ArrayList<Cache_Block> ref_block = new ArrayList<Cache_Block>();
-	 
 	  for (int index = 0; index < set_associativity; index++) {
    	   	if( cache_block[index].accessed() == true) {
    		   ref_block.add(cache_block[index]);
@@ -79,7 +78,4 @@ public class Cache_Set {
            }
            return r;
        }
-    
-
-
 }

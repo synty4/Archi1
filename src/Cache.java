@@ -76,8 +76,6 @@ public class Cache {
       
       // if the block isn't found in the cache, put it there
       if ( !present_memory(add) ) {
-          //allocate(add);
-    	  //write_policy(add);
     	  if( getWrite_policy().equals("ALLOC") || getWrite_policy().equals("alloc")) {
         	  
     	    	 allocate(add);
@@ -101,17 +99,13 @@ public class Cache {
   public void cache_write( int add, int da ) {
 
       if ( !present_memory(add) ) {
-    	  //allocate(add);
-    	  //write_policy(add);
     	  write_miss_count++;
-    	  if( getWrite_policy().equals("ALLOC") || getWrite_policy().equals("alloc")) {
-        	  
+    	  if( getWrite_policy().equals("ALLOC") || getWrite_policy().equals("alloc")) {	  
  	    	 allocate(add);
  	      }
  	      else if( getWrite_policy().equals("AROUND") || getWrite_policy().equals("around")) {
  	    	 //do nothing
  	     }
-     
          
       }
       else{
@@ -148,7 +142,6 @@ public class Cache {
 
       int y = ( add / cache_blocksize ) % cache_set.length;
       Cache_Set my_set = cache_set[y];
-      //Cache_Block discarded = my_set.lru();
       Cache_Block discarded = replacement_policy(my_set);
       
       // If the least recently used block is dirty, write it back to
@@ -166,14 +159,12 @@ public class Cache {
     	  data_to_be_writen[i] = mem.read_from_memory(SAddress + i);
       discarded.block_write_all( cache_getTag(add), data_to_be_writen );
       
-      //discarded.setDirtyness(false);
   }
 
   private void around_read( int add ) {
 
       int y = ( add / cache_blocksize ) % cache_set.length;
       Cache_Set my_set = cache_set[y];
-      //Cache_Block discarded = my_set.lru();
       Cache_Block discarded = replacement_policy(my_set);
      
       int[] data_to_be_writen = new int[cache_blocksize];
@@ -221,19 +212,20 @@ public class Cache {
       double sum_write_hit_rate = ((double)write_hit_count/(double)write_count);
       
       
-      System.out.println( "**************************RESULTS*********************************");
-      System.out.println("The total size of the cache in bytes: " + getCache_size());
-      //HITS
-      System.out.println("The total number of hits: " + sum_hit_count );
-      System.out.println("The hit rate of effective read accesses: " + sum_read_hit_rate);
-      System.out.println("The hit rate of effective write accesses: " + sum_write_hit_rate);
+      System.out.println( "******************************RESULTS**********************************");
+      System.out.println("\n");
+      System.out.println("The total size of the cache in bytes:         " + getCache_size());
+      System.out.println("The total number of hits:                     " + sum_hit_count );
+      System.out.println("The hit rate of effective read accesses:      " + sum_read_hit_rate);
+      System.out.println("The hit rate of effective write accesses:     " + sum_write_hit_rate);
+      
       System.out.println("The total hit rate of all effective accesses: " + sum_hit_rate);
-      //MISSES
-      System.out.println("The total number of Misses: " + sum_miss_count );
-      System.out.println("The miss rate of effective read accesses: " + sum_read_miss_rate);
-      System.out.println("The miss rate of effective write accesses: " + sum_write_miss_rate);
-      System.out.println("The total miss rate of all effective accesses: " + sum_miss_rate);
-      System.out.println( "******************************************************************");
+      System.out.println("The total number of Misses:                   " + sum_miss_count );
+      System.out.println("The miss rate of effective read accesses:     " + sum_read_miss_rate);
+      System.out.println("The miss rate of effective write accesses:    " + sum_write_miss_rate);
+      System.out.println("The total miss rate of all effective accesses:" + sum_miss_rate);
+      System.out.println("\n");
+      System.out.println( "***********************************************************************");
       
 
       this.write_all();

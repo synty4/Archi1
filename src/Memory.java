@@ -2,7 +2,7 @@
  * This class represents the main memory
  * The main memory is integer array of size 4,096 MB
  * Words addresses are simply indices of this array
- * Words data are initialized by default to indices values and 
+ * Words data are initialised by default to indices values and 
  * will be changed dynamically during the execution of the program
  * 
  */

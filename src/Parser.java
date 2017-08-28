@@ -26,8 +26,9 @@ public class Parser {
     public  boolean parse(String[] args)
     {
     	 if (args.length != 6) {
-             System.out.println("Usage : <Filename> <Row Numbers> <Cache Blocksize><Set Associativity> <Replacement Policy>"
-             		+ "<Write Policy>");
+            System.out.println("Usage : <Filename> <Row Numbers>"
+            		           + " <Cache Blocksize> <Set Associativity> "
+            		           + "<Replacement Policy> <Write Policy>");
          }
     	 	 
         int remplacement	= 0;
@@ -35,7 +36,6 @@ public class Parser {
 	    int compteur		= 0;
         int test			= 5;
         
-        //MyCacheSimulator m = new MyCacheSimulator();
        	m.setFile_name(args[0]);
         m.setNumber_rows(Integer.parseInt(args[1]));
         m.setCache_blocksize(Integer.parseInt(args[2]));
@@ -72,16 +72,13 @@ public class Parser {
         	System.exit(1);
          }
      
-
-        /*System.out.println(
-    					"\n Filename : " +          m.getFile_name() +
-    					"\n Rows Number : " +       m.getNumber_rows() +		
-    					"\n Cache Blocksize : " +   m.getCache_blocksize() +
-    					"\n Set Associativity :" +  m.getSet_associativity() +
-    					"\n Remplacement Policy :"+ m.getRemplacement_policy() +
-    					"\n Write Policy : "+		m.getWrite_policy());
-        
-        */
+        System.out.println(
+    					"\n Filename :            " + m.getFile_name() +
+    					"\n Rows Number :         " + m.getNumber_rows() +		
+    					"\n Cache Blocksize :     " + m.getCache_blocksize() +
+    					"\n Set Associativity :   " + m.getSet_associativity() +
+    					"\n Remplacement Policy : " + m.getRemplacement_policy() +
+    					"\n Write Policy :        " + m.getWrite_policy());
 
         return true;
    }

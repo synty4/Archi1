@@ -63,17 +63,8 @@ public class MyCacheSimulator{
    	 if(!my_parser.parse(args)) {
    		    return;
    	  }
-   	System.out.println(
-			"\n Filename : " +          m.getFile_name() +
-			"\n Rows Number : " +       m.getNumber_rows() +		
-			"\n Cache Blocksize : " +   m.getCache_blocksize() +
-			"\n Set Associativity :" +  m.getSet_associativity() +
-			"\n Remplacement Policy :"+ m.getRemplacement_policy() +
-			"\n Write Policy : "+		m.getWrite_policy());
 
-   	 
-   	 Reader my_reader = new Reader(m.getFile_name(), m);
-   	 
+   	 Reader my_reader = new Reader(m.getFile_name(), m);   	 
    	 my_reader.read_file(my_reader.getFile());
          
     }

@@ -98,10 +98,4 @@ public class Cache_Block {
         	my_res += Conversion.convert_to_hex(w) + "     ";
         return my_res;
     }
-
-
-    
-    
-    
-
-}
+ }

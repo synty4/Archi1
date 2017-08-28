@@ -15,7 +15,6 @@ public class Reader {
     public final static int ALLOC = 0;
     public final static int AROUND = 1;
     MyCacheSimulator m = new MyCacheSimulator();
-    
     public File myFile ;
    
     public Reader(String file, MyCacheSimulator mc){
@@ -33,13 +32,8 @@ public class Reader {
        int AccessMem; 
        int dta;
        int read_write = 0;
-       int compteur   = 0;
-       
-       
+       int compteur   = 0;  
        Memory mem = new Memory();
-       //System.out.println("In Reader: row, set assoc, blocksize" + m.getNumber_rows() + m.getSet_associativity() + m.getCache_blocksize() );
-     
-       //Cache my_cache = new Cache(m.getNumber_rows(), m.getSet_associativity(), m.getCache_blocksize(), mem);
        Cache my_cache = new Cache(m.getNumber_rows(), m.getSet_associativity(), m.getCache_blocksize(), mem, m.getRemplacement_policy(), m.getWrite_policy());
        
        try
@@ -54,10 +48,10 @@ public class Reader {
         	   while ((ligne=buff.readLine())!=null)
         	   {	
         		 compteur+=1;
-                // if( compteur < 100000) {
+                if( compteur < 100000) {
         			   
-        		// }
-        	    //else {
+        		}
+        	    else {
         			   
         	       String[] output = ligne.split("\\s");
         	       instruction     = output[0];
@@ -90,8 +84,8 @@ public class Reader {
         	    		   my_cache.cache_read(addr);        	                 
         	    	   }
         	       }
-        	      }
-        	   //}
+        	     }
+        	   }
         	 }
         	      System.out.println("\n\n Number of adresses read: "+""+compteur+", 100.000 ignored for initialisation\n\n");                
         	}		
@@ -108,7 +102,6 @@ public class Reader {
         	      Logger.getLogger(Parser.class.getName()).log(Level.SEVERE, null, ex);
         	}
        }
-
     	
     }
 
